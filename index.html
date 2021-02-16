@@ -83,35 +83,10 @@
           </div>
         </div>
       </div>
-      <div class="row m-5">
-        <div class="col-12 col-lg-4 mt-5">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Titre de la carte</h5>
-              <p class="card-text">Text de la carte</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 mt-5">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Titre de la carte</h5>
-              <p class="card-text">Text de la carte</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 mt-5">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Titre de la carte</h5>
-              <p class="card-text">Text de la carte</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="row m-5" id="teddy-card"></div>
     </section>
 
-    <section class="bg-light mt-5 p-5 fixed-bottom" id="footer">
+    <section class="bg-light mt-5 p-2 fixed-bottom" id="footer">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -144,20 +119,7 @@
       crossorigin="anonymous"
     ></script>
 
-
     <!-- JAVASCRIPT -->
-    <script>
-      var request = new XMLHttpRequest();
-      request.onreadystatechange = function() {
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-          var response = JSON.parse(this.responseText);
-          for (let i of response) {
-            console.log(i.name)
-          }
-        }
-      }
-      request.open("GET", "http://localhost:3000/api/teddies");
-      request.send();
-    </script>
+    <script src="javascript/mon_site.js"></script>
   </body>
 </html>
