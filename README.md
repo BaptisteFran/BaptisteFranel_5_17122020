@@ -26,4 +26,8 @@ A faire
 - Voir pour resize les images ?
 - Faire un fichier JavaScript à part plutôt que dans le code
 - Commencer les pages produit, panier & remerciements
-
+- Rendre les cartes cliquables (utiliser peut-être la fonction Bootstrap)
+- Cliquer sur une carte renvoi vers la page du produit
+- Itérer les couleurs avec une liste dropdown sur la page produit
+- Quand clic sur acheter après avoir sélectionner une couleur, envoi vers panier
+- Quand valider panier, si non vide, envoyer sur page remerciements avec récap de l'achat
