@@ -31,3 +31,4 @@ A faire
 - Itérer les couleurs avec une liste dropdown sur la page produit
 - Quand clic sur acheter après avoir sélectionner une couleur, envoi vers panier
 - Quand valider panier, si non vide, envoyer sur page remerciements avec récap de l'achat
+- Attention au footer qui passe sur certaines cartes
