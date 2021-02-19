@@ -1,12 +1,9 @@
 nbPanier = localStorage.getItem('panier');
 console.log('nbpanier avant :', nbPanier)
 
-function del(id) {
+function del(idTest) {
     nbPanier--;
-    console.log(id);
-    let deleteTeddy = localStorage.getItem(id);
-    console.log(deleteTeddy)
-    alert('Delete teddy' + ' ' + id);
-    localStorage.removeItem(id);
-    localStorage.setItem('panier', nbPanier);
+    console.log(idTest);
+    //localStorage.removeItem(idTest);
+    //localStorage.setItem('panier', nbPanier);
 }
