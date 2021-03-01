@@ -14,6 +14,8 @@ request_product.onreadystatechange = function () {
     }
 }
 
+var couleur;
+
 
 function getProduct(response, id) {
     // ajouter dans dictionnaire plutôt que localstorage, puis ajouter le dictionnaire au localstorage
@@ -27,14 +29,29 @@ function getProduct(response, id) {
             <p class="lead">${i.description}</p>
             <hr class="my-4"><img class="img-fluid" src="${i.imageUrl}" alt="${i.name}">
             <p><strong>${i.price}€</strong></p>
+            <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="colorButton" value="blank">Sélectionnez une couleur
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><input type="button" class="dropdown-item" onclick="getColor(this);" value="Rouge"></input></li>
+              <li><input type="button" class="dropdown-item" onclick="getColor(this);" value="Bleu"></input></li>
+              <li><input type="button" class="dropdown-item" onclick="getColor(this);" value="Beige"></input></li>
+            </ul>
+           </div>
             <a href="panier.html" class="btn btn-primary mt-5" id="add_panier">Ajouter au panier</a>`
             obj = getObject(i);
-            addPanier(obj)
-
+            addPanier(obj);
             break;
 
         }
     }
+}
+
+function getColor(color) {
+    var couleur = color.value;
+    changeButton = document.getElementById('colorButton');
+    changeButton.innerHTML = couleur;
+    changeButton.value = couleur;
 }
 
 function getObject(i) {
@@ -51,6 +68,8 @@ function addPanier(objPanier) {
     if (localStorage.getItem('panier') == null) {
         let panierArray = [];
         ajout_panier.addEventListener('click', function () {
+            couleur = document.getElementById('colorButton').value;
+            objPanier.color = couleur;
             panierArray.push(objPanier);
             panier = JSON.stringify(panierArray);
             localStorage.setItem('panier', panier);
@@ -59,6 +78,8 @@ function addPanier(objPanier) {
         panierArray = localStorage.getItem('panier');
         panier = JSON.parse(panierArray);
         ajout_panier.addEventListener('click', function () {
+            couleur = document.getElementById('colorButton').value;
+            objPanier.color = couleur;
             panier.push(objPanier);
             panierArray = JSON.stringify(panier);
             localStorage.setItem('panier', panierArray);
@@ -66,6 +87,8 @@ function addPanier(objPanier) {
     }
 
 }
+
+
 
 // else ou try/catch
 // plusieurs fonctions pour appel, traitement et affichage api

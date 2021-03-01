@@ -1,6 +1,7 @@
 let element = document.getElementById('article');
 let totalPrice = document.getElementById('total');
 
+
 panier = panier();
 longueur = longueur(panier);
 main(longueur);
@@ -13,7 +14,7 @@ function main(longueur) {
             total += prix;
             const newElement = document.createElement('tr');
             element.appendChild(newElement);
-            newElement.innerHTML = `<td scope="row" td class="text-center"><p><strong>` + panier[i].name + `</strong></p></td><td class="text-center"><img class="img-fluid rounded w-25" src="` + panier[i].imageUrl + `"></td><td class="text-center">` + panier[i].price + ` €</td><td class="text-center">
+            newElement.innerHTML = `<td scope="row" td class="text-center"><p><strong>` + panier[i].name + ' ' + panier[i].color + `</strong></p></td><td class="text-center"><img class="img-fluid rounded w-25" src="` + panier[i].imageUrl + `"></td><td class="text-center">` + panier[i].price + ` €</td><td class="text-center">
         <input type="button" class="btn btn-danger" value="Supprimer" onClick="del(` + i + `);"></td>`;
             // Fonction suppression objet
         }
