@@ -65,22 +65,32 @@ function sendCommand(event) {
         email: document.getElementById('email').value
     }
 
-    if (typeof (products) == "object" && typeof (contact) == "object") {
-        fetch(new Request('http://localhost:3000/api/teddies/order', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            })
-        }), {
-            body: JSON.stringify({ contact, products }),
-        })
-            .then(response => response.json())
-            .then(json => {localStorage.setItem('order', JSON.stringify(json)), window.location.href= "remerciements.html#"+json.orderId})
-            .catch(e => console.error)
-    } else {
-        console.log("Mauvais type de données.")
+    if (products == null || products == undefined) {
+        alert("Le panier est vide");
     }
+
+    if(contact.firstName == "" || contact.lastName == "" || contact.address == "" || contact.city == "" || contact.email == "") {
+        alert("Veuillez remplir les champs obligatoires (*)")
+    } else {
+        if (typeof (products) == "object" && typeof (contact) == "object") {
+            fetch(new Request('http://localhost:3000/api/teddies/order', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                })
+            }), {
+                body: JSON.stringify({ contact, products }),
+            })
+                .then(response => response.json())
+                .then(json => {localStorage.setItem('order', JSON.stringify(json)), window.location.href= "remerciements.html#"+json.orderId})
+                .catch(e => console.error)
+        } else {
+            console.log("Mauvais type de données.")
+        }
+    }
+
+    
 }
 
 
@@ -96,17 +106,18 @@ function getApi(method, url) {
 
 
 function getTeddies(teddies) {
+    var id = panier.indexOf(teddies._id);
+    console.log(id);
     const newElement = document.createElement('tr');
     element.appendChild(newElement);
     newElement.innerHTML = `<td scope="row" class="text-center"><p><strong>` + teddies.name + `</strong></p></td><td class="text-center"><img class="img-fluid rounded w-25" src="` + teddies.imageUrl + `"></td><td class="text-center price" value="` + teddies.price + `">` + teddies.price + ` €</td><td class="text-center">
-                <input type="button" class="btn btn-danger" value="Supprimer" onClick="deleteItem(` + teddies.id + `);"></td>`;
+                <input type="button" class="btn btn-danger" value="Supprimer" onClick="deleteItem(` + id + `);"></td>`;
 }
 
 function calcTotal(teddies, longueur) {
     var prixTotal = 0;
     price = parseInt(teddies.price);
     total.push(price);
-    console.log(total);
     if (total.length == longueur) {
         for (i = 0; i < longueur; i++) {
             prixTotal += total[i];

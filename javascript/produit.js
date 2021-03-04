@@ -81,7 +81,7 @@ function addPanier(id) {
                 couleur = document.getElementById('colorButton').value;
                 if (couleur == 'blank') {
                     event.preventDefault();
-                    console.log("Veuillez choisir une couleur");
+                    alert("Veuillez choisir une couleur");
                 } else {
                     panier = new Array;
                     panier.push(id);
@@ -94,7 +94,7 @@ function addPanier(id) {
                 couleur = document.getElementById('colorButton').value;
                 if (couleur == 'blank') {
                     event.preventDefault();
-                    console.log("Veuillez choisir une couleur");
+                    alert("Veuillez choisir une couleur");
                 } else {
                     panierArray = localStorage.getItem('panier');
                     panier = JSON.parse(panierArray);
