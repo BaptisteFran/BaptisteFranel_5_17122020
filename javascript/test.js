@@ -1,5 +1,3 @@
-console.log('hello');
-
 function couleur() {
     color = "bleu";
     return color;
