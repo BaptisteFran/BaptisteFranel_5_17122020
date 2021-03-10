@@ -18,28 +18,33 @@ getApi('GET', 'http://localhost:3000/api/teddies')
 
 
 function recupObjet(obj) {
-  for (let i of obj) {
-    let newElement = document.createElement('div');
-    let element = document.getElementById('teddy-card');
-    type = typeof(i._id);
-    element.appendChild(newElement);
-    newElement.classList.add("col-12", "col-lg-4", "mt-5");
-    newElement.innerHTML = `<div class="card shadow-sm"><img class="img-fluid" src="${i.imageUrl}"
-     alt="${i.name}">
-     <div class="card-body">
-     <h5 class="card-title">${i.name}</h5>
-     <p class="card-text"><strong>${i.price}€</strong></p>
-     <p class="card-text">${i.description}</p>
-     <a href="produit.html" class="btn btn-primary" id="${i._id}">
-     Voir le produit</a>
-     </div>
-     </div>`;
-
-    // RECUPERATION ID PELUCHE
-    let teddy_id = document.getElementById(i._id);
-    teddy_id.addEventListener('click', function () {
-      // ajouter id dans url
-      document.getElementById(i._id).href = "produit.html#" + i._id;
-    });
+  try {
+    for (let i of obj) {
+      let newElement = document.createElement('div');
+      let element = document.getElementById('teddy-card');
+      type = typeof(i._id);
+      element.appendChild(newElement);
+      newElement.classList.add("col-12", "col-lg-4", "mt-5");
+      newElement.innerHTML = `<div class="card shadow-sm"><img class="img-fluid" src="${i.imageUrl}"
+       alt="${i.name}">
+       <div class="card-body">
+       <h5 class="card-title">${i.name}</h5>
+       <p class="card-text"><strong>${i.price}€</strong></p>
+       <p class="card-text">${i.description}</p>
+       <a href="produit.html" class="btn btn-primary" id="${i._id}">
+       Voir le produit</a>
+       </div>
+       </div>`;
+  
+      // RECUPERATION ID PELUCHE
+      let teddy_id = document.getElementById(i._id);
+      teddy_id.addEventListener('click', function () {
+        // ajouter id dans url
+        document.getElementById(i._id).href = "produit.html#" + i._id;
+      });
+    }
+  } catch {
+    console.log("Nous n'avons pas pu afficher les produits.")
   }
+  
 }
