@@ -91,7 +91,7 @@ function sendCommand(event) {
                     'Accept': 'application/json'
                 })
             }), {
-                body: JSON.stringify({ contact, products }),
+                body: JSON.stringify({ contact , products }),
             })
                 .then(response => response.json())
                 .then(json => { localStorage.setItem('order', JSON.stringify(json)), window.location.href = "remerciements.html#" + json.orderId })
@@ -100,8 +100,6 @@ function sendCommand(event) {
             console.log("Mauvais type de données.")
         }
     }
-
-
 }
 
 
